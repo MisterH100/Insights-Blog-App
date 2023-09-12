@@ -1,16 +1,19 @@
-const Header =()=>{
+import Link from "next/link";
+
+const Header =({children}: {children: React.ReactNode})=>{
     return(
-        <header className="border-b border-[#040F1A] shadow-md">
+        <header className="shadow-xl drop-shadow-lg bg-base-100 text-base-content">
             <div className="navbar h-32">
-                <div className="flex-1">
-                    <a className="btn btn-ghost normal-case text-xl">Insights</a>
+                <div className="flex-1 font-title prose">
+                    <Link href={'/'} className="btn btn-ghost normal-case text-2xl font-extrabold">Insights</Link>
                 </div>
                 <div className="flex-none gap-2">
                     <div className="form-control">
-                         <input 
-                         type="text" 
-                         placeholder="Search" 
-                         className="input input-bordered input-sm w-full max-w-xs" />
+                        <input 
+                            type="text" 
+                            placeholder="Search" 
+                            className="input input-bordered input-sm bg-base-200 w-full max-w-xs md:focus:w-96 shadow-inner text-base-content" 
+                        />
                     </div>
 
                     <div className="dropdown dropdown-end">
@@ -20,7 +23,7 @@ const Header =()=>{
 
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                             <li><a>Profile</a></li>
-                            <li><a>Settings</a></li>
+                            <li>{children}</li>
                             <li><a>Logout</a></li>
                         </ul>
                     </div>

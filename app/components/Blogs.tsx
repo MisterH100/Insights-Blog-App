@@ -13,10 +13,10 @@ const Blogs = ()=>{
     })
 
     return(
-        <section className="w-full flex flex-wrap justify-center gap-3 p-10">
+        <section className="w-full flex flex-wrap justify-center gap-3 p-10 bg-base-100 text-base-content">
             {loading? <Loading/>:
                 <>
-                    <div className="card w-96 bg-[#112131] shadow-xl">
+                    <div className="card w-96 bg-base-200 shadow-2xl">
                         <div className="card-body">
                             <h2 className="card-title">Card title!</h2>
                             <p className="h-36 overflow-hidden text-ellipsis text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates facilis nam harum aspernatur dignissimos a eum odit accusamus quibusdam consectetur. Similique esse reiciendis voluptas laborum corrupti, id fuga quidem dolores?
@@ -24,14 +24,14 @@ const Blogs = ()=>{
                             </p>
                             <div className="card-actions justify-center">
                             <Link href={'/1'}>
-                                <button className="btn btn-outline text-white">View Blog</button>
+                                <button className="btn btn-outline bg-base-300">View Blog</button>
                             </Link>
                             </div>
                         </div>
 
                     </div>
 
-                    <div className="card w-96 bg-[#112131] shadow-xl">
+                    <div className="card w-96 bg-base-200 shadow-2xl">
                         <div className="card-body">
                             <h2 className="card-title">Card title!</h2>
                             <p className="h-36 overflow-hidden text-ellipsis text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates facilis nam harum aspernatur dignissimos a eum odit accusamus quibusdam consectetur. Similique esse reiciendis voluptas laborum corrupti, id fuga quidem dolores?
@@ -39,7 +39,7 @@ const Blogs = ()=>{
                             </p>
                             <div className="card-actions justify-center">
                             <Link href={'/1'}>
-                                <button className="btn btn-outline text-white">View Blog</button>
+                                <button className="btn btn-outline bg-base-300">View Blog</button>
                             </Link>
                             </div>
                         </div>

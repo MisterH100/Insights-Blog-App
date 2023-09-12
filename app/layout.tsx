@@ -1,4 +1,5 @@
 "use client";
+import DropDown from './components/Dropdown';
 import Header from './components/Header'
 import './globals.css'
 import type { Metadata } from 'next'
@@ -10,12 +11,13 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({children,}: {children: React.ReactNode}) {
-  const [theme, setTheme] = useState("forest");
+  const [theme, setTheme] = useState(false);
 
   return (
-    <html lang="en" data-theme={theme}>
-      <body className="relative bg-[#071422]">
-        <Header/>
+    <html lang="en" data-theme={theme? "winter": "night"}>
+      <body className="bg-base-100">
+        <Header
+          children={<DropDown PageTheme={setTheme} theme={theme}/>}/>
         {children}
       </body>
     </html>
