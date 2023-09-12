@@ -1,7 +1,8 @@
+"use client";
 import Header from './components/Header'
 import './globals.css'
 import type { Metadata } from 'next'
-
+import { useState} from 'react'
 
 export const metadata: Metadata = {
   title: 'Insights blog',
@@ -9,9 +10,11 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({children,}: {children: React.ReactNode}) {
+  const [theme, setTheme] = useState("forest");
+
   return (
-    <html lang="en" data-theme="forest">
-      <body className="bg-[#071422]">
+    <html lang="en" data-theme={theme}>
+      <body className="relative bg-[#071422]">
         <Header/>
         {children}
       </body>
