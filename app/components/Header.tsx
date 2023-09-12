@@ -1,6 +1,6 @@
 const Header =()=>{
     return(
-        <header>
+        <header className="border-b border-[#040F1A] shadow-md">
             <div className="navbar h-32">
                 <div className="flex-1">
                     <a className="btn btn-ghost normal-case text-xl">Insights</a>

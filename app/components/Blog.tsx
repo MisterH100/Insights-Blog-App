@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Blog =()=>{
     return(
-        <section>
+        <section className="p-10">
             <article className="min-h-screen px-10">
                 <div className="hero-content">
                     <div className="w-full">
