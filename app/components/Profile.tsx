@@ -1,24 +1,42 @@
 const Profile =()=>{
     return(
-        <section className="bg-base-100 text-base-content">
-            <div className="hero min-h-screen flex items-start p-10">
-                <div className="hero-content flex-col lg:flex-row items-start md:border-r-2">
-                    <div>
-                        <div className="bg-slate-500 h-60 w-60">
-
+        <section className="bg-base-100 text-base-content p-10">
+            <article className="flex flex-col w-full lg:flex-row">
+                <div className="w-full md:w-2/4 rounded-box">
+                    <div className="text-center">
+                        <div className="avatar">
+                            <div className="w-24 rounded">
+                                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            </div>
                         </div>
-                        <ul className="flex flex-col justify-center items-center">
-                            <li>log out</li>
-                            <li>Delete profile</li>
-                            <li>help</li>
+                        <div className="h-20">
+                            <h2 className="text-lg font-semibold">Username</h2>
+                            <p className="h-10">Bio Lorem ipsum dolor sit amet consectetur</p>
+                        </div>
+                    </div>
+  
+                    <div className="text-center">
+                        <ul className="list-none">
+                            <li>
+                                <button className="btn btn-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" className="fill-current w-4 h-4"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>
+                                    Edit
+                                </button>
+                            </li>
+                            <li>
+                                <button className="btn bt-sm btn-link">Logout</button>
+                            </li>
+                            <li>
+                                <button className="btn btn-sm btn-link">Delete</button>
+                            </li>
                         </ul>
                     </div>
-                    <div className="max-w-xs">
-                        <h1 className="text-5xl font-bold">Username</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    </div>
+                </div> 
+                <div className="divider lg:divider-horizontal"></div> 
+                <div className="w-full mdw-2/5 h-96 bg-base-200 rounded-box">
+                   
                 </div>
-            </div>
+            </article>
         </section>
     )
 }

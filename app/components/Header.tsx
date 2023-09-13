@@ -4,7 +4,7 @@ const Header =({children}: {children: React.ReactNode})=>{
     return(
         <header className="shadow-xl drop-shadow-lg bg-base-100 text-base-content">
             <div className="navbar h-32">
-                <div className="flex-1 font-title prose">
+                <div className="flex-1 font-title">
                     <Link href={'/'} className="btn btn-ghost normal-case text-2xl font-extrabold">Insights</Link>
                 </div>
                 <div className="flex-none gap-2">
@@ -22,9 +22,9 @@ const Header =({children}: {children: React.ReactNode})=>{
                         </button>
 
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                            <li><a>Profile</a></li>
+                            <li><Link href={'/user/1'}>Profile</Link></li>
                             <li>{children}</li>
-                            <li><a>Logout</a></li>
+                            <li><Link href={'/'}>Logout</Link></li>
                         </ul>
                     </div>
                 </div>

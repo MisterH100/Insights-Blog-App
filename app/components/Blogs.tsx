@@ -23,7 +23,7 @@ const Blogs = ()=>{
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ea, autem dolores labore culpa laudantium minus ipsam aspernatur animi architecto ratione sit modi ex. Repellat dolorem voluptate ut earum consequuntur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, voluptate harum iure in distinctio sunt beatae culpa aliquam magnam voluptates ex asperiores nostrum, perferendis animi, eaque vitae dolorem corrupti quo.
                             </p>
                             <div className="card-actions justify-center">
-                            <Link href={'/1'}>
+                            <Link href={'/blogs/1'}>
                                 <button className="btn btn-outline bg-base-300">View Blog</button>
                             </Link>
                             </div>
@@ -38,7 +38,7 @@ const Blogs = ()=>{
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ea, autem dolores labore culpa laudantium minus ipsam aspernatur animi architecto ratione sit modi ex. Repellat dolorem voluptate ut earum consequuntur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, voluptate harum iure in distinctio sunt beatae culpa aliquam magnam voluptates ex asperiores nostrum, perferendis animi, eaque vitae dolorem corrupti quo.
                             </p>
                             <div className="card-actions justify-center">
-                            <Link href={'/1'}>
+                            <Link href={'/blogs/1'}>
                                 <button className="btn btn-outline bg-base-300">View Blog</button>
                             </Link>
                             </div>
