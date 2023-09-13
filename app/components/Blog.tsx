@@ -1,44 +1,68 @@
+'use client';
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import Error from "./Error";
 
-const Blog =({BlogPost}: any)=>{
+interface IBlog{
+    _id?: number,
+    name: string,
+    title: string,
+    blog: string
+}
+const Blog =({BlogPostId}: any)=>{
+    const [fail, setFail] = useState(false);
+    const [blog, setBlog] = useState<IBlog>({
+        _id: 1,
+        name:"",
+        title: "",
+        blog: ""
+    });
+    const URL =`http://localhost:8000/api/getBlogs/${BlogPostId}`;
+
+    const fetchBlog = async(URL: string)=>{
+        try {
+            const response = await fetch(URL);
+            const data = response.json();
+            setBlog(await data);
+        } catch (error) {
+            console.log(error);
+            setFail(true);
+        }
+    }
+    useEffect(()=>{
+        fetchBlog(URL);
+    },[])
     return(
         <section className="w-full p-10 bg-base-100 text-base-content">
-            <article className="w-full flex flex-col md:items-center min-h-screen px-2 md:px-10">
-                <div>
-                    <div className="flex items-center gap-2">
-                        <div className="avatar">
-                            <div className="w-24 rounded bg-slate-400">
-                                <img 
-                                    src="" 
-                                    alt="image"
-                                />
-                            </div>
-                        </div>
+            {!fail?
+                <article className="w-full flex flex-col md:items-center min-h-screen px-2 md:px-10">
+                    <div className="w-full flex justify-start md:justify-end gap-2">
                         <ul>
                             <li>
-                              {BlogPost}
+                            {blog.name}
                             </li>
                             <li>
-                                00/00/00
+                                Posted on :00/00/00
                             </li>
                             <li className="text-sm">
                                 Powered by @insights
                             </li>
                         </ul>
                     </div>
-                </div>
 
-                <div className="py-6 prose">
-                    <h1>Hello there</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint voluptatum debitis incidunt quia eos. Ea possimus voluptas modi reprehenderit tempora, autem quo nostrum sed laborum consectetur officiis quis dolorem error? Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit magnam vitae aspernatur dolorum error officiis ipsam ratione! Consequatur iure excepturi ratione, nesciunt alias molestiae saepe voluptatibus est officia aperiam minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, sed! Ducimus, tempora ea! Animi reiciendis eum vitae cum cupiditate quibusdam voluptatum, minima deserunt aliquid sit, veritatis architecto natus, laudantium est.
-                    </p>
-                </div>
-                <Link href={'/'}>
-                    <button className="btn btn-outline bg-base-300">Back to blogs</button>
-                </Link>
+                    <div className="py-6 prose max-w-[100ch]">
+                        <h1>{blog.title}</h1>
+                        <div className="font-semibold">
+                            {blog.blog}
+                        </div>
+                    </div>
+                    <Link href={'/'}>
+                        <button className="btn btn-outline bg-base-300">Back to blogs</button>
+                    </Link>
 
-            </article>
+                </article>: <Error message="Failed to fetch blog post"/>
+            
+            }
     </section>
     )
 }

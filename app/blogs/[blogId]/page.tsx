@@ -1,9 +1,12 @@
 import Blog from "@/app/components/Blog";
-
-const BlogPage =({params:{blogId},}: {params:{blogId: string}})=>{
-    console.log(blogId) 
+type Params ={
+    params:{
+        blogId: string;
+    }
+}
+const BlogPage =({params:{blogId},}: Params)=>{ 
     return(
-        <Blog BlogPost={blogId}/>
+        <Blog BlogPostId={blogId}/>
     )
 }
 
