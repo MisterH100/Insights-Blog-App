@@ -9,7 +9,7 @@ const Error = ({message}: IMessage)=>{
     return(
         <div className="text-center">
             <h1>{message}</h1>
-            <button onClick={HandleReload}className="btn btn-outline">Reload</button>
+            <button onClick={HandleReload}className="btn btn-outline mt-10">Reload</button>
         </div>
     )
 }
