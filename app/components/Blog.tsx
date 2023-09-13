@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Blog =()=>{
+const Blog =({BlogPost}: any)=>{
     return(
         <section className="w-full p-10 bg-base-100 text-base-content">
             <article className="w-full flex flex-col md:items-center min-h-screen px-2 md:px-10">
@@ -16,7 +16,7 @@ const Blog =()=>{
                         </div>
                         <ul>
                             <li>
-                               Name
+                              {BlogPost}
                             </li>
                             <li>
                                 00/00/00
@@ -44,3 +44,5 @@ const Blog =()=>{
 }
 
 export default Blog;
+
+
