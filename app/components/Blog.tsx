@@ -7,7 +7,8 @@ interface IBlog{
     _id?: number,
     name: string,
     title: string,
-    blog: string
+    blog: string,
+    createdAt: Date
 }
 const Blog =({BlogPostId}: any)=>{
     const [fail, setFail] = useState(false);
@@ -15,7 +16,8 @@ const Blog =({BlogPostId}: any)=>{
         _id: 1,
         name:"",
         title: "",
-        blog: ""
+        blog: "",
+        createdAt: new Date
     });
     const URL =`http://localhost:8000/api/getBlogs/${BlogPostId}`;
 
@@ -42,7 +44,7 @@ const Blog =({BlogPostId}: any)=>{
                             {blog.name}
                             </li>
                             <li>
-                                Posted on :00/00/00
+                                Posted on :{blog.createdAt.toLocaleString().slice(-24, -14)}
                             </li>
                             <li className="text-sm">
                                 Powered by @insights

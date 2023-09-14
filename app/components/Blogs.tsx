@@ -9,15 +9,17 @@ interface IBlogs{
     name: string;
     title: string;
     blog: string;
-    
+    createdAt: Date;
 }
+
 const Blogs = ()=>{
     const [isLoaded, setIsLoaded] = useState(true);
     const [blogs, setBlogs] = useState<IBlogs[]>([{
         _id: 1,
         name: "",
         title: "",
-        blog: ""
+        blog: "",
+        createdAt: new Date(),
     }])
 
     const URL = 'http://localhost:8000/api/getBlogs';
@@ -31,6 +33,7 @@ const Blogs = ()=>{
             console.log(error);
         }
     }
+
     useEffect(()=>{
         fetchData(URL);
     },[]);
@@ -40,9 +43,12 @@ const Blogs = ()=>{
             {isLoaded? blogs.map(blog => 
                 <div key={blog._id}className="card w-96 bg-base-200 shadow-2xl">
                     <div className="card-body">
-                        <div className="w-full flex justify-between items-center">
+                        <div className="w-full flex justify-between">
                             <h2 className="card-title truncate">{blog.title}</h2>
-                            <Link href={'/'}className="text-sm text-center truncate">{blog.name}</Link>
+                            <div>
+                                <Link href={'/'}className="text-sm text-center truncate">{blog.name}</Link>
+                                <p className="text-xs">{blog.createdAt.toLocaleString().slice(-24, -14)}</p>
+                            </div>
                         </div>
                         <p className="h-36 overflow-hidden text-ellipsis text-base">{blog.blog}
                         </p>
