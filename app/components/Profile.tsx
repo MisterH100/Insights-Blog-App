@@ -34,7 +34,7 @@ const Profile =()=>{
                 </div> 
                 <div className="divider lg:divider-horizontal"></div> 
                 <div className="w-full mdw-2/5 h-96 bg-base-200 rounded-box">
-                   
+                   Liked Blogs
                 </div>
             </article>
         </section>

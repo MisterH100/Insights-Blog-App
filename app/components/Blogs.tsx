@@ -2,25 +2,13 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Error from "./Error";
-
-
-interface IBlogs{ 
-    _id?: number
-    name: string;
-    title: string;
-    blog: string;
-    createdAt: Date;
-}
+import { IBlog } from "../interfaces/BlogInterface";
+import { getDate } from "../functions/getDate";
 
 const Blogs = ()=>{
     const [isLoaded, setIsLoaded] = useState(true);
-    const [blogs, setBlogs] = useState<IBlogs[]>([{
-        _id: 1,
-        name: "",
-        title: "",
-        blog: "",
-        createdAt: new Date(),
-    }])
+    const [liked, setLiked] = useState(false);
+    const [blogs, setBlogs] = useState<IBlog[]>([])
 
     const URL = 'http://localhost:8000/api/getBlogs';
     const fetchData = async (URL:string) => {
@@ -36,7 +24,7 @@ const Blogs = ()=>{
 
     useEffect(()=>{
         fetchData(URL);
-    },[]);
+    },[blogs]);
 
     return(
         <section className="w-full flex flex-wrap justify-center gap-3 p-10 bg-base-100 text-base-content">
@@ -47,15 +35,18 @@ const Blogs = ()=>{
                             <h2 className="card-title truncate">{blog.title}</h2>
                             <div>
                                 <Link href={'/'}className="text-sm text-center truncate">{blog.name}</Link>
-                                <p className="text-xs">{blog.createdAt.toLocaleString().slice(-24, -14)}</p>
+                                <p className="text-xs">{getDate(blog.createdAt)}</p>
                             </div>
                         </div>
                         <p className="h-36 overflow-hidden text-ellipsis text-base">{blog.blog}
                         </p>
-                        <div className="card-actions justify-center">
+                        <div className="card-actions justify-between">
                         <Link href={`/blogs/${blog._id}`}>
-                            <button className="btn btn-outline bg-base-300">View Blog</button>
+                            <button className="btn btn-outline bg-base-100">View Blog</button>
                         </Link>
+                        <button className="btn btn-outline">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill={liked? 'red':'none'} viewBox="0 0 24 24" stroke={liked?'red':'currentColor'}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                        </button>
                         </div>
                     </div>
 

@@ -2,14 +2,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Error from "./Error";
+import { IBlog } from "../interfaces/BlogInterface";
+import { getDate } from "../functions/getDate";
 
-interface IBlog{
-    _id?: number,
-    name: string,
-    title: string,
-    blog: string,
-    createdAt: Date
-}
 const Blog =({BlogPostId}: any)=>{
     const [fail, setFail] = useState(false);
     const [blog, setBlog] = useState<IBlog>({
@@ -17,8 +12,9 @@ const Blog =({BlogPostId}: any)=>{
         name:"",
         title: "",
         blog: "",
-        createdAt: new Date
+        createdAt: new Date()
     });
+    
     const URL =`http://localhost:8000/api/getBlogs/${BlogPostId}`;
 
     const fetchBlog = async(URL: string)=>{
@@ -31,6 +27,8 @@ const Blog =({BlogPostId}: any)=>{
             setFail(true);
         }
     }
+
+    
     useEffect(()=>{
         fetchBlog(URL);
     },[])
@@ -44,7 +42,7 @@ const Blog =({BlogPostId}: any)=>{
                             {blog.name}
                             </li>
                             <li>
-                                Posted on :{blog.createdAt.toLocaleString().slice(-24, -14)}
+                                Posted on: {getDate(blog.createdAt)}
                             </li>
                             <li className="text-sm">
                                 Powered by @insights
