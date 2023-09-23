@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Error from "./Error";
 import { IBlog } from "../interfaces/BlogInterface";
 import { getDate } from "../functions/getDate";
+import Image from 'next/image'
 import profileImage from "../assets/handsomeSelfie.png";
 
 
@@ -21,9 +22,9 @@ const Blog =({BlogPostId}: any)=>{
     
     const URL =`https://misterh-api-server.onrender.com/api/blogs/blog/${BlogPostId}`;
 
-    const fetchBlog = async(URL: string)=>{
+    const fetchBlog = async(srting: string)=>{
         try {
-            const response = await fetch(URL);
+            const response = await fetch(srting);
             const data = response.json();
             setBlog(await data);
         } catch (error) {
@@ -43,9 +44,13 @@ const Blog =({BlogPostId}: any)=>{
                     <div className="w-full flex justify-start items-center gap-4">
                         <div className="avatar">
                             <div className="w-24 rounded-full">
-                                <img src={profileImage.src} alt="profile image" />
+                                <Image 
+                                    src={profileImage.src} 
+                                    alt="profile image" 
+                                />
                             </div>
                         </div>
+
                         <ul className="min-w-max">
                             <li>
                                 {blog.name}

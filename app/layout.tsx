@@ -14,8 +14,9 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
     <html lang="en" data-theme={"night"}>
       <body className="bg-base-100">
-        <Header
-          children={<DropDown/>}/>
+        <Header>
+          <DropDown/>
+        </Header>
         {children}
       </body>
     </html>
