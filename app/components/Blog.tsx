@@ -1,6 +1,7 @@
 'use client';
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import ReactMarkdown from 'react-markdown'
 import Error from "./Error";
 import { IBlog } from "../interfaces/BlogInterface";
 import { getDate } from "../functions/getDate";
@@ -40,18 +41,20 @@ const Blog =({BlogPostId}: any)=>{
     return(
         <section className="w-full p-10 bg-base-100 text-base-content">
             {!fail?
-                <article className="w-full flex flex-col md:items-center min-h-screen px-2 md:px-10">
+                <article className="w-full min-w-full flex flex-col md:items-center min-h-screen px-2 md:px-60">
                     <div className="w-full flex justify-start items-center gap-4">
                         <div className="avatar">
                             <div className="w-24 rounded-full">
                                 <Image 
                                     src={profileImage.src} 
-                                    alt="profile image" 
+                                    alt="profile image"
+                                    width={100}
+                                    height={100} 
                                 />
                             </div>
                         </div>
 
-                        <ul className="min-w-max">
+                        <ul className="min-w-full text-sm md:text-base">
                             <li>
                                 {blog.name}
                             </li>
@@ -64,13 +67,15 @@ const Blog =({BlogPostId}: any)=>{
                         </ul>
                     </div>
 
-                    <div className="py-6 prose max-w-[100ch] min-w-max">
-                        <h1>{blog.title}</h1>
+                    <div className="py-6 prose min-w-full">
+                        <h1 className="underline min-w-max">{blog.title}</h1>
                         <div className="font-semibold">
-                            {blog.blog}
+                            <ReactMarkdown> 
+                                {blog.blog}
+                            </ReactMarkdown>
                         </div>
                     </div>
-                    <div className="w-full flex justify-start pt-20 min-w-max">
+                    <div className="w-full flex justify-start md:justify-center pt-20 min-w-max">
                         <Link href={'/'} className="btn btn-outline bg-base-300">
                             Back to blogs
                         </Link>

@@ -7,6 +7,7 @@ import { getDate } from "../functions/getDate";
 import { fetchData } from "../functions/getData";
 import { formatNumber } from "../functions/getFormattedNumber";
 import { likePost } from "../functions/likeBlog";
+import ReactMarkdown from "react-markdown";
 
 
 const Blogs = ()=>{
@@ -29,8 +30,11 @@ const Blogs = ()=>{
                                 <p className="text-xs">{getDate(blog.createdAt)}</p>
                             </div>
                         </div>
-                        <p className="h-36 overflow-hidden text-ellipsis text-base">{blog.blog}
-                        </p>
+                        <div className="h-36 overflow-hidden text-ellipsis text-base shadow-inner">
+                            <ReactMarkdown>
+                                {blog.blog}
+                            </ReactMarkdown>
+                        </div>
                         <div className="card-actions justify-between">
                             <Link href={`/blogs/${blog._id}`}>
                                 <button className="btn btn-outline bg-base-100">View Blog</button>
