@@ -1,7 +1,7 @@
 const Loading = () =>{
     return(
         <section className="absolute w-full animate-pulse" >
-           <article className="w-full h-[200px] flex justify-center items-center">
+           {/*<article className="w-full h-[200px] flex justify-center items-center">
                 <div className="w-full md:w-[50%] h-full md:h-[80%] p-3 flex items-center bg-base-200 rounded shadow-2xl gap-2">
                     <div className="h-24 w-28 bg-gray-700">
                         <svg className="w-10 h-10 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -15,7 +15,24 @@ const Loading = () =>{
                         <div className="h-2 bg-gray-700 w-full mb-2.5"></div>
                     </div>
                 </div>
-            </article>
+            </article>*/}
+            <div className="w-full flex flex-wrap justify-center items center gap-3 p-10 bg-base-100">
+                <div className="card w-96 h-72 bg-base-200 shadow-2xl p-4">
+                    <div className="h-4 bg-gray-700 w-48 mb-4"></div>
+                    <div className="h-36 bg-gray-700 w-full"></div>
+                    <div className="h-12 w-20 m-auto bg-gray-700"></div>
+                </div>
+                <div className="card w-96 h-72 bg-base-200 shadow-2xl p-4">
+                    <div className="h-4 bg-gray-700 w-48 mb-4"></div>
+                    <div className="h-36 bg-gray-700 w-full"></div>
+                    <div className="h-12 w-20 m-auto bg-gray-700"></div>
+                </div>
+                <div className="card w-96 h-72 bg-base-200 shadow-2xl p-4">
+                    <div className="h-4 bg-gray-700 w-48 mb-4"></div>
+                    <div className="h-36 bg-gray-700 w-full"></div>
+                    <div className="h-12 w-20 m-auto bg-gray-700"></div>
+                </div>
+            </div>
             <div className="w-full flex flex-wrap justify-center items center gap-3 p-10 bg-base-100">
                 <div className="card w-96 h-72 bg-base-200 shadow-2xl p-4">
                     <div className="h-4 bg-gray-700 w-48 mb-4"></div>

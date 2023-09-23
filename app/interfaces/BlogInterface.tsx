@@ -3,5 +3,6 @@ export interface IBlog{
     name: string;
     title: string;
     blog: string;
+    likes: number;
     createdAt: Date;
 }

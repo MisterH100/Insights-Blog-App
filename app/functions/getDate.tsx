@@ -1,5 +1,5 @@
 
-export const getDate = (blodDate: Date)=>{
-    const shortDate = blodDate.toLocaleString().slice(0,10);
+export const getDate = (blogDate: Date)=>{
+    const shortDate = blogDate.toLocaleString().slice(0,10);
     return shortDate;
 } 

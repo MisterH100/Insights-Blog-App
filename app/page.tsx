@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Blogs from "./components/Blogs";
 import Loading from "./components/Loading";
-import User from "./components/User";
+
 
 
 export default function Home() {
@@ -19,7 +19,6 @@ export default function Home() {
       {
         !loading?
         <>
-          <User/>
           <Blogs/>
         </>:
         <Loading/>
