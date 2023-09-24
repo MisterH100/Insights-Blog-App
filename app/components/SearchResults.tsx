@@ -1,28 +1,30 @@
-"use client";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+"use client"
+import { useSearchParams } from 'next/navigation'
+import {useEffect, useState } from "react"
+import { IBlog } from "../interfaces/BlogInterface"
+import { fetchData } from "../functions/getData"
+import Link from "next/link"
 import Error from "./Error";
-import { IBlog } from "../interfaces/BlogInterface";
-import { fetchData } from "../functions/getData";
-import Loading from "./Loading";
+import Loading from "./Loading"
 
 
-const Blogs = ()=>{
+const SearchResults =()=>{
+    const searchParams = useSearchParams();
+    const query = searchParams.get('query');
+
     const [loading, setLoading] = useState(true);
     const [failed, setFailed] = useState(false);
     const [blogs, setBlogs] = useState<IBlog[]>([])
-
-    const URL = 'https://misterh-api-server.onrender.com/api/blogs';
+    const SEARCH_URL = `https://misterh-api-server.onrender.com/api/blogs/search/${query}`
     useEffect(()=>{
-        fetchData(URL, setBlogs,setFailed,setLoading);
-    },[]);
-
+        fetchData(SEARCH_URL,setBlogs,setFailed,setLoading)
+    })
 
     return(
         <section className="w-full flex flex-wrap justify-center gap-3 p-10 bg-base-100 text-base-content">
-            {loading? <Loading/>: blogs.length == 0? <h1>No blogs Published at the moment</h1>: null}
+            {loading? <Loading/> : blogs.length == 0? <h1>Results for <span className="underline">{query}</span> not found</h1>: null}
             {failed? <Error message="Failed to fetch blog posts"/>:
-                blogs.map(blog => 
+            blogs.map(blog => 
                 <div key={blog._id}className="w-full card md:w-96 bg-base-200 shadow-2xl">
                     <div className="card-body">
                         <div className="w-full h-20 overflow-hidden">
@@ -47,7 +49,6 @@ const Blogs = ()=>{
                     </div>
 
                 </div>)
-                
             }
 
             
@@ -55,4 +56,4 @@ const Blogs = ()=>{
     )
 }
 
-export default Blogs;
+export default SearchResults;

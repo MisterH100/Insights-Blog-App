@@ -1,6 +1,5 @@
-import DropDown from './components/Dropdown';
-import Header from './components/Header'
 import './globals.css'
+import Header from './components/Header'
 import type { Metadata } from 'next'
 
 
@@ -14,9 +13,7 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
     <html lang="en" data-theme={"night"}>
       <body className="bg-base-100">
-        <Header>
-          <DropDown/>
-        </Header>
+        <Header/>
         {children}
       </body>
     </html>

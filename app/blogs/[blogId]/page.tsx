@@ -1,10 +1,6 @@
 import Blog from "@/app/components/Blog";
-type Params ={
-    params:{
-        blogId: string;
-    }
-}
-const BlogPage =({params:{blogId},}: Params)=>{ 
+
+const BlogPage =({params:{blogId}}: {params:{blogId: string}})=>{ 
     return(
         <Blog BlogPostId={blogId}/>
     )

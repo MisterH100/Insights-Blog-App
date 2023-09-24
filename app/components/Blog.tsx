@@ -41,7 +41,7 @@ const Blog =({BlogPostId}: any)=>{
     return(
         <section className="w-full p-10 bg-base-100 text-base-content">
             {!fail?
-                <article className="w-full min-w-full flex flex-col md:items-center min-h-screen px-2 md:px-60">
+                <article className="w-full min-w-full flex flex-col md:items-center min-h-screen px-2 md:px-20">
                     <div className="w-full flex justify-start items-center gap-4">
                         <div className="avatar">
                             <div className="w-24 rounded-full">
@@ -68,7 +68,7 @@ const Blog =({BlogPostId}: any)=>{
                     </div>
 
                     <div className="py-6 prose min-w-full">
-                        <h1 className="underline min-w-max">{blog.title}</h1>
+                        <h1 className="underline">{blog.title}</h1>
                         <div className="font-semibold">
                             <ReactMarkdown> 
                                 {blog.blog}
