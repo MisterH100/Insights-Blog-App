@@ -29,7 +29,7 @@ const Blogs = ()=>{
         fetchData(WELCOME_BLOG_URL,setWelcomeBlog,setFailed,setLoading)
     },[URL,WELCOME_BLOG_URL]);
 
-
+ 
     return(
         <section className="w-full min-h-screen p-10 bg-base-100 text-base-content">
             {loading?<WelcomeBlogLoading/>:
@@ -38,7 +38,7 @@ const Blogs = ()=>{
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <div>
                             <h1 className="text-5xl font-bold">Eurika! a light bulb moment</h1>
-                            <p className="py-6">Prepare for moments of pure enlightment Lets ignite your curiosity and spark your Eureka! moments. Dive into a world of fascinating insights and discoveries by clicking the link below.</p>
+                            <p className="py-6">Prepare for moments od pure enlightment and lets ignite your curiosity and spark you Eurika! moments.Dive into a world os facscinating insights and discoveries clicking the link below to find out more.</p>
                             <Link href={'https://misterhportfolio.vercel.app/#contact'} target="_blank" className="btn btn-primary">I'm in</Link>
                         </div>
                     </div>
