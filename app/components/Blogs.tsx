@@ -38,7 +38,7 @@ const Blogs = ()=>{
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <div>
                             <h1 className="text-5xl font-bold">Eurika! a light bulb moment</h1>
-                            <p className="py-6">Prepare for moments od pure enlightment and lets ignite your curiosity and spark you Eurika! moments.Dive into a world os facscinating insights and discoveries clicking the link below to find out more.</p>
+                            <p className="py-6">Prepare for moments of pure enlightment🌟 and lets ignite your curiosity and spark your 'Eurika!'' moments. Dive into a world of facscinating insights and discoveries click the link below to contact and find out more.</p>
                             <Link href={'https://misterhportfolio.vercel.app/#contact'} target="_blank" className="btn btn-primary">I am in</Link>
                         </div>
                     </div>
