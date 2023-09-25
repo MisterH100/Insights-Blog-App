@@ -27,7 +27,7 @@ const Blogs = ()=>{
     useEffect(()=>{
         fetchData(URL, setBlogs,setFailed,setLoading);
         fetchData(WELCOME_BLOG_URL,setWelcomeBlog,setFailed,setLoading)
-    },[]);
+    },[URL,WELCOME_BLOG_URL]);
 
 
     return(
