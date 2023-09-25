@@ -27,7 +27,7 @@ const Blog =({BlogPostId}: any)=>{
     const URL =`https://misterh-api-server.onrender.com/api/blogs/blog/${BlogPostId}`;
     useEffect(()=>{
         fetchData(URL, setBlog,setFailed,setLoading);
-    },[URL]);
+    });
 
 
     return(
