@@ -5,7 +5,7 @@ import { IBlog } from "../interfaces/BlogInterface"
 import { fetchData } from "../functions/getData"
 import Link from "next/link"
 import Error from "./Error";
-import Loading from "./Loading"
+import {Loading} from "./Loading"
 
 
 const SearchResults =()=>{
@@ -18,7 +18,7 @@ const SearchResults =()=>{
     const SEARCH_URL = `https://misterh-api-server.onrender.com/api/blogs/search/${query}`
     useEffect(()=>{
         fetchData(SEARCH_URL,setBlogs,setFailed,setLoading)
-    })
+    },[])
 
     return(
         <section className="w-full flex flex-wrap justify-center gap-3 p-10 bg-base-100 text-base-content">
