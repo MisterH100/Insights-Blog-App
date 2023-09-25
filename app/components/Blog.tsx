@@ -1,14 +1,14 @@
 'use client';
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import ReactMarkdown from 'react-markdown'
-import Error from "./Error";
 import { IBlog } from "../interfaces/BlogInterface";
 import { getDate } from "../functions/getDate";
+import { BlogLoading } from "./Loading";
 import { fetchData } from "../functions/getData";
+import Link from "next/link";
+import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
 import profileImage from "../assets/handsomeSelfie.png";
-import { BlogLoading } from "./Loading";
+import Error from "./Error";
 
 
 
@@ -25,10 +25,10 @@ const Blog =({BlogPostId}: any)=>{
         createdAt: new Date()
     });
     const URL =`https://misterh-api-server.onrender.com/api/blogs/blog/${BlogPostId}`;
+
     useEffect(()=>{
         fetchData(URL,setBlog,setFailed,setLoading)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    },[URL])
 
 
     return(
