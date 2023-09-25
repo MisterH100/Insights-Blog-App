@@ -1,16 +1,16 @@
 import { Dispatch, SetStateAction } from "react";
 import { IBlog } from "../interfaces/BlogInterface";
 
-export const fetchData= async (URL:string, setBlogState:Dispatch<SetStateAction<IBlog[]>>,setFailed:Dispatch<SetStateAction<boolean>>,setLoading:Dispatch<SetStateAction<boolean>>) => {
+export const fetchData= async (URL:string, setBlogState:Dispatch<SetStateAction<IBlog[]>>| Dispatch<SetStateAction<IBlog>>,setFailedState:Dispatch<SetStateAction<boolean>>,setLoadingState:Dispatch<SetStateAction<boolean>>) => {
     try {
         const response = await fetch(URL);
         const data = response.json();
         setBlogState(await data);
-        setLoading(false)
+        setLoadingState(false)
     } catch (error) {
-        setFailed(true)
+        setFailedState(true)
         console.log(error);
     }
 
-    return[setBlogState,setFailed,setLoading]
+    return[setBlogState,setFailedState,setLoadingState]
 }

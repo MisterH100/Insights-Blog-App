@@ -5,42 +5,35 @@ import ReactMarkdown from 'react-markdown'
 import Error from "./Error";
 import { IBlog } from "../interfaces/BlogInterface";
 import { getDate } from "../functions/getDate";
+import { fetchData } from "../functions/getData";
 import Image from 'next/image'
 import profileImage from "../assets/handsomeSelfie.png";
+import { BlogLoading } from "./Loading";
 
 
 
 const Blog =({BlogPostId}: any)=>{
-    const [fail, setFail] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [failed, setFailed] = useState(false);
     const [blog, setBlog] = useState<IBlog>({
         _id: 1,
         name:"",
         title: "",
+        description:"",
         blog: "",
         likes: 0,
         createdAt: new Date()
     });
-    
     const URL =`https://misterh-api-server.onrender.com/api/blogs/blog/${BlogPostId}`;
-
-    const fetchBlog = async(srting: string)=>{
-        try {
-            const response = await fetch(srting);
-            const data = response.json();
-            setBlog(await data);
-        } catch (error) {
-            console.log(error);
-            setFail(true);
-        }
-    }
-
     useEffect(()=>{
-        fetchBlog(URL);
-    },[])
+        fetchData(URL, setBlog,setFailed,setLoading);
+    },[]);
+
 
     return(
-        <section className="w-full p-10 bg-base-100 text-base-content">
-            {!fail?
+        <section className="relative w-full p-10 bg-base-100 text-base-content">
+            {loading? <BlogLoading/> : null}
+            {failed?<Error message="Failed to fetch blog post"/>:
                 <article className="w-full min-w-full flex flex-col md:items-center min-h-screen px-2 md:px-20">
                     <div className="w-full flex justify-start items-center gap-4">
                         <div className="avatar">
@@ -81,7 +74,7 @@ const Blog =({BlogPostId}: any)=>{
                         </Link>
                     </div>
 
-                </article>: <Error message="Failed to fetch blog post"/>
+                </article>
             
             }
     </section>
