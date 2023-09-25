@@ -27,7 +27,9 @@ const Blog =({BlogPostId}: any)=>{
     const URL =`https://misterh-api-server.onrender.com/api/blogs/blog/${BlogPostId}`;
     useEffect(()=>{
         fetchData(URL, setBlog,setFailed,setLoading);
-    },[URL,blog]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[URL]);
 
 
     return(
