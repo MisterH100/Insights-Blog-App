@@ -5,6 +5,8 @@ import Error from "./Error";
 import { IBlog } from "../interfaces/BlogInterface";
 import { fetchData } from "../functions/getData";
 import {Loading, WelcomeBlogLoading} from "./Loading";
+import webdev from "../assets/webdev.svg";
+import Image from "next/image";
 
 
 const Blogs = ()=>{
@@ -29,7 +31,6 @@ const Blogs = ()=>{
         fetchData(WELCOME_BLOG_URL,setWelcomeBlog,setFailed,setLoading)
     },[URL,WELCOME_BLOG_URL]);
 
- 
     return(
         <section className="w-full min-h-screen p-10 bg-base-100 text-base-content">
             {loading?<WelcomeBlogLoading/>:
@@ -43,8 +44,14 @@ const Blogs = ()=>{
                         </div>
                     </div>
                 </div>
-                <div className="w-full card md:w-96 bg-blue-700 shadow-2xl">
-                    <div className="card-body">
+                <div className="relative w-full card md:w-96 bg-blue-700 shadow-2xl overflow-hidden">
+                    <div className="absolute w-full h-full flex justify-end items-end -bottom-4 opacity-10">
+                        <Image
+                            src={webdev}
+                            alt="icon"
+                        />
+                    </div>
+                    <div className="z-10 card-body">
                         <div className="w-full h-20 overflow-hidden">
                             <span>Pinned</span>
                             <h2 className="w-full card-title">{welcomeBlog.title}</h2>
@@ -71,8 +78,14 @@ const Blogs = ()=>{
 
                 {failed? <Error message="Failed to fetch blog posts"/>:
                     blogs.map(blog => 
-                    <div key={blog._id}className="w-full card md:w-96 bg-base-200 shadow-2xl">
-                        <div className="card-body">
+                    <div key={blog._id}className="relative w-full card md:w-96 bg-base-200 shadow-2xl overflow-hidden">
+                        <div className="absolute w-full h-full flex justify-end items-end -bottom-4 opacity-10">
+                            <Image
+                                src={webdev}
+                                alt="icon"
+                            />
+                        </div>
+                        <div className="z-10 card-body">
                             <div className="w-full h-20 overflow-hidden">
                                 <h2 className="w-full card-title">{blog.title}</h2>
                             </div>
