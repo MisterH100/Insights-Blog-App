@@ -48,7 +48,7 @@ const Blog =({BlogPostId}: any)=>{
                             </div>
                         </div>
 
-                        <ul className="min-w-full text-sm md:text-base">
+                        <ul className="min-w-max text-sm md:text-base">
                             <li>
                                 {blog.name}
                             </li>
