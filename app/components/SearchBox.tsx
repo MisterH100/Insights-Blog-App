@@ -12,7 +12,7 @@ const SearchBox = () =>{
                 value={query}
                 onChange={(e)=>setQuery(e.target.value)}
                 placeholder="Search" 
-                className="input input-bordered input-sm bg-base-100 w-full md:focus:w-96 shadow-inner text-base-content" 
+                className="input input-bordered input-sm bg-white w-full md:focus:w-96 shadow-inner text-base-content" 
             />
         </form>
     )
