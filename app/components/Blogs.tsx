@@ -86,7 +86,7 @@ const Blogs = ()=>{
                             </div>
                             <div className="card-actions justify-between">
                                 <Link href={`/blogs/${blog._id}`}>
-                                    <button className="btn btn-secondary">Raed Blog</button>
+                                    <button className="btn btn-secondary">Read Blog</button>
                                 </Link>
                                 {/*<button
                                     value={'Like'}
