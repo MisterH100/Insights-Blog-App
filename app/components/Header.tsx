@@ -131,6 +131,20 @@ const Header =()=>{
                             />
                         </svg>
                     </button>
+                    {user.username != null?
+                        <Link href={"/profile"}>
+                            <div className="avatar block md:hidden pl-8">
+                                <div className="w-10 h-10 rounded-full">
+                                    <Image 
+                                        src={profileImage.src} 
+                                        alt="profile image"
+                                        width={100}
+                                        height={100} 
+                                    />
+                                </div>
+                            </div>
+                        </Link>:null
+                    }
                 </nav>
             </div>
         </header>
