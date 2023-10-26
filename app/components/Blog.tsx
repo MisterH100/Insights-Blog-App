@@ -1,40 +1,28 @@
 'use client';
-import { useEffect, useState } from "react";
-import { IBlog } from "../interfaces/BlogInterface";
 import { getDate } from "../functions/getDate";
-import { BlogLoading } from "./Loading";
-import { fetchData } from "../functions/getData";
 import Link from "next/link";
 import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
 import profileImage from "../assets/handsomeSelfie.png";
-import Error from "./Error";
+import { useFetchBlog } from "../functions/getData";
+import { useGlobalContext } from "../utils/globalContext";
+import { Loading } from "./Loading";
+import { ErrorMessage } from "./Error";
+
 
 
 
 const Blog =({BlogPostId}: any)=>{
-    const [loading, setLoading] = useState(true);
-    const [failed, setFailed] = useState(false);
-    const [blog, setBlog] = useState<IBlog>({
-        _id: 1,
-        name:"",
-        title: "",
-        description:"",
-        blog: "",
-        likes: 0,
-        createdAt: new Date()
-    });
     const URL =`https://misterh-api-server.onrender.com/api/blogs/blog/${BlogPostId}`;
+    const {loading} = useGlobalContext();
+    const {blog,error}= useFetchBlog(URL)
 
-    useEffect(()=>{
-        fetchData(URL,setBlog,setFailed,setLoading)
-    },[URL])
 
 
     return(
         <section className="relative w-full p-10 bg-base-100 text-base-content">
-            {loading? <BlogLoading/> : null}
-            {failed?<Error message="Failed to fetch blog post"/>:
+            {loading? <Loading/>:
+                error?<ErrorMessage message="failed to load blog post"/>:
                 <article className="w-full min-w-full flex flex-col md:items-center min-h-screen px-2 md:px-20">
                     <div className="w-full flex justify-start items-center gap-4">
                         <div className="avatar">
@@ -76,8 +64,8 @@ const Blog =({BlogPostId}: any)=>{
                     </div>
 
                 </article>
-            
             }
+            
     </section>
     )
 }

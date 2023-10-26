@@ -1,8 +1,8 @@
 
 export default function SearchLayout({children,}: {children: React.ReactNode}) {
-    return (
-     <section>
-        {children}
+  return (
+    <section>
+      {children}
     </section>
-    )
-  }
+  )
+}

@@ -21,7 +21,7 @@ const config: Config = {
     require("daisyui")],
     
   daisyui: {
-    themes: ["pastel", "forest", "winter", "night", "retro"],
+    themes: ["pastel", "forest", "winter", "night", "retro","autumn","cupcake","black"],
   },
 }
 export default config
