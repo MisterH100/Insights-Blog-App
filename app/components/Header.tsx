@@ -2,9 +2,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import insightsLogo from "../assets/insightslogo.svg";
-import profileImage from "../assets/handsomeSelfie.png";
+import profileImage from "../assets/userimage.png";
 import {usePathname } from "next/navigation";
 import { useGlobalContext } from "../utils/globalContext";
+import { Drawer } from "./Drawer";
 
 const Header =()=>{
     const pathname = usePathname();
@@ -79,7 +80,7 @@ const Header =()=>{
                             </Link>
                         </li>
                     </ul>
-                    {user.username != null?
+                    {user?.username != null?
                         <div className="hidden md:flex gap-2 items-center flex-shrink text-black ml-8">
                             <div>
                                 <h1 className="font-bold">{user.name} {user.surname}</h1>
@@ -89,7 +90,7 @@ const Header =()=>{
                             <div className="avatar">
                                 <div className="w-20 h-20 rounded-full">
                                     <Image 
-                                        src={profileImage.src} 
+                                        src={user.profileImage.image_url?user.profileImage.image_url:profileImage.src} 
                                         alt="profile image"
                                         width={100}
                                         height={100} 
@@ -99,7 +100,7 @@ const Header =()=>{
                         </div>:
                         null
                     }   
-                    <span className="px-8 block md:hidden">
+                    <span className="block md:hidden">
                         <Link href={"/blogs/search"} className="flex items-center gap-2">   
                             <svg 
                             className="w-6 h-6 text-black" 
@@ -116,27 +117,12 @@ const Header =()=>{
                             </svg>
                         </Link>
                     </span>
-                    <button className="block md:hidden">
-                        <svg 
-                            className="w-6 h-6 text-black" 
-                            aria-hidden="true" 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            fill="none" 
-                            viewBox="0 0 16 12">
-                            <path 
-                                stroke="currentColor" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                strokeWidth="2" d="M1 1h14M1 6h14M1 11h7"
-                            />
-                        </svg>
-                    </button>
-                    {user.username != null?
+                    {user?.username != null?
                         <Link href={"/profile"}>
                             <div className="avatar block md:hidden pl-8">
                                 <div className="w-10 h-10 rounded-full">
                                     <Image 
-                                        src={profileImage.src} 
+                                        src={user.profileImage.image_url?user.profileImage.image_url:profileImage.src}
                                         alt="profile image"
                                         width={100}
                                         height={100} 
@@ -145,6 +131,7 @@ const Header =()=>{
                             </div>
                         </Link>:null
                     }
+                    <Drawer/>
                 </nav>
             </div>
         </header>

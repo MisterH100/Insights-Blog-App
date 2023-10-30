@@ -6,7 +6,7 @@ import { useGlobalContext } from "../utils/globalContext";
 import axios from "axios";
 
 interface ILogin{
-    username: string;
+    email: string;
     password: string;
 }
 
@@ -14,8 +14,9 @@ interface ILogin{
 export const LoginModal = ()=>{
     const pathname = usePathname();
     const router = useRouter();
-    const {setUser,loading,setLoading,setIsAuthenticated,loginRef} = useGlobalContext();
+    const {setUser,setIsAuthenticated,loginRef,setToken} = useGlobalContext();
     const [login, setLogin] = useState({} as ILogin);
+    const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState("");
 
 
@@ -25,12 +26,12 @@ export const LoginModal = ()=>{
 
     const HandleSubmit = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
         e.preventDefault()
-        if(login.username != null){
+        if(login.email != null){
             setLoading(true)
             try {
                 
                 await axios.post("https://misterh-api-server.onrender.com/api/login", {
-                    username: login.username,
+                    email: login.email,
                     password: login.password
                 },
                 {headers: {
@@ -40,6 +41,7 @@ export const LoginModal = ()=>{
                     setLoading(false);
                     setUser(response.data.user);
                     setIsAuthenticated(true);
+                    setToken(response.data.token)
                     loginRef.current?.close();
                 })
             } catch (error: any) {
@@ -87,21 +89,24 @@ export const LoginModal = ()=>{
                     <div className="card w-full">
                         <form className="card-body">
                             <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text text-black">Email</span>
+                                <label htmlFor="email"
+                                    className="label">
+                                    <span className="label-text text-black">Email or Username</span>
                                 </label>
                                 <input 
                                     type="text"
-                                    id="username"
-                                    name="username"
+                                    id="email"
+                                    name="email"
                                     onChange={handleChange}
-                                    placeholder="email" 
-                                    className="input input-bordered bg-white text-black" 
+                                    placeholder="email or username" 
+                                    className="input input-bordered bg-white text-black"
+                                    autoComplete="true"
                                     required 
                                 />
                             </div>
                             <div className="form-control">
-                                <label className="label">
+                                <label htmlFor="password" 
+                                    className="label">
                                     <span className="label-text text-black">Password</span>
                                 </label>
                                 <input 
@@ -110,16 +115,21 @@ export const LoginModal = ()=>{
                                     name="password"
                                     onChange={handleChange}                                   
                                     placeholder="password" 
-                                    className="input input-bordered bg-white text-black" 
+                                    className="input input-bordered bg-white text-black"
                                     required 
                                 />
-                                <label 
+                                <span
                                     className="label">
-                                    <Link href="#" className="label-text-alt link link-hover text-black">Forgot password?</Link>
-                                </label>
+                                    <Link 
+                                        id="forgot_password"
+                                        href="#" 
+                                        className="label-text-alt link link-hover text-black">
+                                            Forgot password?
+                                    </Link>
+                                </span>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary"
+                                <button className="btn btn-primary disabled:bg-slate-700"
                                     disabled={loading?true:false}
                                     onClick={HandleSubmit}
                                     >
@@ -130,10 +140,13 @@ export const LoginModal = ()=>{
                                         }
                                 </button>
                             </div>
-                            <label 
+                            <span
                                 className="label w-full">
-                                <Link href="#" className="w-full link link-hover text-blue-700 text-center">Sign up</Link>
-                            </label>
+                                <Link 
+                                    id="sign_up"
+                                    href="#" 
+                                    className="w-full link link-hover text-blue-700 text-center ">Sign up</Link>
+                            </span>
                         </form>
                     </div>
                     </div>
