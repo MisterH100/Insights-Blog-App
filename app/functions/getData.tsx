@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IBlog } from "../interfaces/BlogInterface";
-import { useGlobalContext } from "../utils/globalContext";
+import { IUser, useGlobalContext } from "../utils/globalContext";
 
 
 export const useFetchBlogs = (URL: string) =>{
@@ -78,4 +78,30 @@ export const useSearchBlogs = (URL: string) =>{
     },[URL])
 
     return blogs
+}
+
+export const useFetchPublishers = (URL: string) =>{
+    const {setLoading} = useGlobalContext()
+    const [publishers, setPublisher] = useState<IUser[]>([{} as IUser]);
+    const fetchData= async () => {
+        try {
+            setLoading(true)
+            await fetch(URL)
+            .then(async (response) =>{     
+                const data = response.json();
+                setPublisher(await data);
+                setLoading(false)
+            })
+        } catch (error) {
+            console.log(error);
+            setLoading(false);
+        }
+    }
+    useEffect(()=>{
+        fetchData()
+    },[URL])
+
+    return publishers
 } 
+
+

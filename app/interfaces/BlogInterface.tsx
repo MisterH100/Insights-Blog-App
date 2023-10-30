@@ -4,6 +4,7 @@ export interface IBlog{
     title: string;
     description?: string,
     blog: string;
+    publisher: string;
     likes: number;
     createdAt: Date;
 }
