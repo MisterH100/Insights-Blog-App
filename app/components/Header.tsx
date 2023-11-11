@@ -43,12 +43,12 @@ const Header =()=>{
                             </Link>
                         </li>
                         <li>
-                            <Link href={"/blogs/search"} className="flex items-center gap-2">   
+                            <Link href={"/search"} className="flex items-center gap-2">   
                                 <svg 
                                 className="w-6 h-6 text-black" 
                                 aria-hidden="true" 
                                 xmlns="http://www.w3.org/2000/svg" 
-                                fill={pathname == "/blogs/search"? "black": "none"}
+                                fill={pathname == "/search"? "black": "none"}
                                 viewBox="0 0 20 20">
                                 <path 
                                     stroke="currentColor" 
@@ -101,12 +101,12 @@ const Header =()=>{
                         null
                     }   
                     <span className="block md:hidden">
-                        <Link href={"/blogs/search"} className="flex items-center gap-2">   
+                        <Link href={"/search"} className="flex items-center gap-2">   
                             <svg 
                             className="w-6 h-6 text-black" 
                             aria-hidden="true" 
                             xmlns="http://www.w3.org/2000/svg" 
-                            fill={pathname == "/blogs/search"? "black": "none"}
+                            fill={pathname == "/search"? "black": "none"}
                             viewBox="0 0 20 20">
                             <path 
                                 stroke="currentColor" 

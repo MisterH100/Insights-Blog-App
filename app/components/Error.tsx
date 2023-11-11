@@ -39,7 +39,7 @@ export const NoResults = () =>{
                 width={200}
                 height={200}
             />
-        <span>results not found</span>
+        <span>blogs not found</span>
     </div>
     )
 }
