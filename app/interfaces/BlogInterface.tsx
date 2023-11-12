@@ -6,5 +6,6 @@ export interface IBlog{
     blog: string;
     publisher: string;
     likes: number;
+    blogImage: string;
     createdAt: Date;
 }

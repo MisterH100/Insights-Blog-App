@@ -43,12 +43,12 @@ const Header =()=>{
                             </Link>
                         </li>
                         <li>
-                            <Link href={"/blogs/search"} className="flex items-center gap-2">   
+                            <Link href={"/search"} className="flex items-center gap-2">   
                                 <svg 
                                 className="w-6 h-6 text-black" 
                                 aria-hidden="true" 
                                 xmlns="http://www.w3.org/2000/svg" 
-                                fill={pathname == "/blogs/search"? "black": "none"}
+                                fill={pathname == "/search"? "black": "none"}
                                 viewBox="0 0 20 20">
                                 <path 
                                     stroke="currentColor" 
@@ -87,7 +87,7 @@ const Header =()=>{
                                 <h3 className="text-sm opacity-50">{user.username}</h3>
                             </div>
 
-                            <div className="avatar">
+                            <Link href={"/profile"} className="avatar">
                                 <div className="w-20 h-20 rounded-full">
                                     <Image 
                                         src={user.profileImage.image_url?user.profileImage.image_url:profileImage.src} 
@@ -96,17 +96,17 @@ const Header =()=>{
                                         height={100} 
                                     />
                                 </div>
-                            </div>
+                            </Link>
                         </div>:
                         null
                     }   
                     <span className="block md:hidden">
-                        <Link href={"/blogs/search"} className="flex items-center gap-2">   
+                        <Link href={"/search"} className="flex items-center gap-2">   
                             <svg 
                             className="w-6 h-6 text-black" 
                             aria-hidden="true" 
                             xmlns="http://www.w3.org/2000/svg" 
-                            fill={pathname == "/blogs/search"? "black": "none"}
+                            fill={pathname == "/search"? "black": "none"}
                             viewBox="0 0 20 20">
                             <path 
                                 stroke="currentColor" 

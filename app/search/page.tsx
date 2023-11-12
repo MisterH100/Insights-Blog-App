@@ -1,6 +1,6 @@
 'use client'
 import Blogs from "@/app/components/Blogs";
-import {useEffect, useState } from "react";
+import { useState } from "react";
 import {useRouter,useSearchParams } from "next/navigation";
 import SearchResults from "@/app/components/SearchResults";
 import { useSearchBlogs } from "@/app/functions/getData";
@@ -53,7 +53,7 @@ const SearchPage =()=>{
             </form>
             {query.length > 0?
                 <SearchResults blogs={blogs}/>:
-                <Blogs/>
+                <Blogs filter=""/>
             }
         </main>
     )

@@ -3,7 +3,7 @@ import loadingGif from '@/app/assets/linsightsloading.gif'
 
 export const Loading = () =>{
     return(
-        <div className="absolute pt-10 w-full h-screen flex justify-center items-center top-0 left-0">
+        <div className="absolute pt-10 w-full h-screen flex justify-center items-center top-0 left-0 bg-black">
             <div className="text-center">
                 <Image
                     src={loadingGif}
