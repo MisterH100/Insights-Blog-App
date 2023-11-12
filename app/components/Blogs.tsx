@@ -22,9 +22,9 @@ const Blogs = ({filter}:{filter:any})=>{
             {loading?<Loading/>:
                 error?<ErrorMessage message="opps an error has occured"/>:
                 <> 
-                    {filteredBlogs.length < 1?<NoResults/>:
+                    {filter == null?<NoResults/>:
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 gap-y-10 mt-4">
-                            { filteredBlogs.map((blog,index) =>
+                            {filteredBlogs.map((blog,index) =>
                                 <motion.div
                                     initial={{opacity: 0,y:10}}
                                     whileInView={{opacity: 1, y:0}}

@@ -1,30 +1,28 @@
 'use client'
 import Blogs from "@/app/components/Blogs";
 import { useState } from "react";
-import {useRouter,useSearchParams } from "next/navigation";
 import SearchResults from "@/app/components/SearchResults";
 import { useSearchBlogs } from "@/app/functions/getData";
 import { useGlobalContext } from "@/app/utils/globalContext";
 
 const SearchPage =()=>{
-    const {setLoading} = useGlobalContext()
-    const router = useRouter();
-    const s = useSearchParams();
-    const search = s.get("s");
+    const {setLoading} = useGlobalContext();
+    const [search, setSearch] = useState("")
+    const [query, setQuery] = useState("");
     const SEARCH_URL = `https://misterh-api-server.onrender.com/api/blogs/search/${search}`;
     const blogs = useSearchBlogs(SEARCH_URL);
-    const [query, setQuery] = useState("");
+
 
     const HandleSearch = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
-        e.preventDefault(); 
-        router.push(`/blogs/search?s=${query}`)
+        e.preventDefault();
+        setLoading(true)
+        setSearch(query)
+        setLoading(false)
     };
 
     const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
+        e.preventDefault();
         setQuery(e.target.value)
-        setLoading(true)
-        router.push(`/blogs/search?s=${query}`)
-        setLoading(false)
     };
 
 
@@ -51,7 +49,7 @@ const SearchPage =()=>{
                     </button>
                 </div>
             </form>
-            {query.length > 0?
+            {search?
                 <SearchResults blogs={blogs}/>:
                 <Blogs filter=""/>
             }

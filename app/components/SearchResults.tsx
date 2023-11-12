@@ -12,7 +12,7 @@ const SearchResults =({blogs}:{blogs:IBlog[]})=>{
     const {loading} = useGlobalContext();
 
     return(
-        <section className="w-full gap-3 p-10 bg-base-100 text-base-content">
+        <section className="relative w-full gap-3 p-10 bg-base-100 text-base-content">
             <h1 className="font-bold text-3xl p-4">Results:</h1>
             {loading?<Loading/>:blogs.length < 1?<NoResults/>:
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 gap-y-10 ">
