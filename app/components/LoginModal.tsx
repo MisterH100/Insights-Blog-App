@@ -1,7 +1,6 @@
 'use client'
 import Link from "next/link";
-import {useEffect, useState} from "react";
-import { usePathname,useRouter } from "next/navigation";
+import {useState} from "react";
 import { useGlobalContext } from "../utils/globalContext";
 import axios from "axios";
 
@@ -12,8 +11,6 @@ interface ILogin{
 
 
 export const LoginModal = ()=>{
-    const pathname = usePathname();
-    const router = useRouter();
     const {setUser,setIsAuthenticated,loginRef,setToken} = useGlobalContext();
     const [login, setLogin] = useState({} as ILogin);
     const [loading, setLoading] = useState(false);
@@ -26,7 +23,7 @@ export const LoginModal = ()=>{
 
     const HandleSubmit = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
         e.preventDefault()
-        if(login.email != null){
+        if(login.email != null && login.password != null){
             setLoading(true)
             try {
                 
@@ -57,33 +54,15 @@ export const LoginModal = ()=>{
         <dialog ref={loginRef} className="modal modal-bottom sm:modal-middle">
             <div className="modal-box w-full h-fit p-0 last:overflow-hidden bg-transparent">
                 <div className="w-full relative hero-content flex-col bg-white">
-                    {pathname == "/profile"?
-                        <button
-                            onClick={()=>router.push("/")}
+                    <form method="dialog">
+                        <button 
                             className="btn btn-square absolute right-0 top-0 bg-transparent border-none outline-none">
-                            <svg 
-                                className="w-6 h-6" 
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" 
-                                fill="none"
-                                viewBox="0 0 20 20">
-                                <path 
-                                    stroke="currentColor" 
-                                    strokeLinecap="round" 
-                                    strokeLinejoin="round" 
-                                    strokeWidth="2" d="M3 8v10a1 1 0 0 0 1 1h4v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5h4a1 1 0 0 0 1-1V8M1 10l9-9 9 9"
-                                />
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
-                        </button>:
-                        <form method="dialog">
-                            <button 
-                                className="btn btn-square absolute right-0 top-0 bg-transparent border-none outline-none">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-                        </form>
-                    }
+                        </button>
+                    </form>
                     <div className="text-center text-black">
-                        <span>{status}</span>
+                        <span className="text-red-500">{status}</span>
                         <h1 className="text-5xl font-bold">Login now!</h1>
                     </div>
                     <div className="card w-full">
@@ -122,7 +101,7 @@ export const LoginModal = ()=>{
                                     className="label">
                                     <Link 
                                         id="forgot_password"
-                                        href="#" 
+                                        href="https://thehandsomedev.com/collab" target="_blank" 
                                         className="label-text-alt link link-hover text-black">
                                             Forgot password?
                                     </Link>
@@ -144,7 +123,7 @@ export const LoginModal = ()=>{
                                 className="label w-full">
                                 <Link 
                                     id="sign_up"
-                                    href="#" 
+                                    href="https://thehandsomedev.com/collab" target="_blank"
                                     className="w-full link link-hover text-blue-700 text-center ">Sign up</Link>
                             </span>
                         </form>

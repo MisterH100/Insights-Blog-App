@@ -6,6 +6,7 @@ import { Loading } from "./Loading";
 import { useGlobalContext } from "../utils/globalContext";
 import { useFetchBlogs } from "../functions/getData";
 import { ErrorMessage, NoResults } from "./Error";
+import {motion} from "framer-motion";
 
 
 const Blogs = ({filter}:{filter:any})=>{
@@ -17,13 +18,20 @@ const Blogs = ({filter}:{filter:any})=>{
     return(
         <div className="w-full min-h-screen md:px-20 bg-base-100 text-base-content">
             <h1 className="font-bold text-3xl p-4">All blog Posts:</h1>
+            {filter?<span className="font-bold p-4">{filter}'s blog posts</span>: null}
             {loading?<Loading/>:
                 error?<ErrorMessage message="opps an error has occured"/>:
                 <> 
                     {filteredBlogs.length < 1?<NoResults/>:
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 gap-y-10 ">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 gap-y-10 mt-4">
                             { filteredBlogs.map((blog,index) =>
-                                <div key={index} className="card card-compact min-w-96 shadow-sm shadow-gray-800  text-white z-0">
+                                <motion.div
+                                    initial={{opacity: 0,y:10}}
+                                    whileInView={{opacity: 1, y:0}}
+                                    transition={{type: "tween", duration:1}}
+                                    viewport={{once: true}}
+                                    key={index} 
+                                    className="card card-compact min-w-96 shadow-sm shadow-gray-800  text-white z-0">
                                     <div className="bg-white rounded-tr-md rounded-tl-md h-40 flex justify-center items-center">
                                         <Image
                                             className="w-full h-full object-contain"
@@ -38,7 +46,7 @@ const Blogs = ({filter}:{filter:any})=>{
                                         <Link href={`/blogs/${blog._id}`} className="link">Read Now</Link>
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
                             )}
                             
                         </div>

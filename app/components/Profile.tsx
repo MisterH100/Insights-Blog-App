@@ -5,6 +5,7 @@ import { useGlobalContext } from "../utils/globalContext";
 import { useFetchBlogs } from "../functions/getData";
 import { Loading } from "./Loading";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 
 
@@ -42,44 +43,31 @@ export const Profile =()=>{
                         <div className="stat-title">Blogs</div>
                         <div className="stat-desc">{ownedBlogs.length}</div>
                     </div>
-                
-                    <div className="stat place-items-center">
-                        <div className="stat-title">followers</div>
-                        <div className="stat-desc">0</div>
-                    </div>
-                
+            
                     <div className="stat place-items-center">
                         <div className="stat-title">Joined</div>
                         <div className="stat-desc">{new Date(user.createdAt).toLocaleDateString()}</div>
                     </div>
                 </div>
                 <h3 className="w-full text-center p-4">Published blogs</h3>
-                <div className="w-full flex justify-center md:hidden">
-                    <div className="stack">
-                        {ownedBlogs.map((blog,index)=>
-                            <Link href={`blogs/${blog._id}`} key={index} className="card w-72 bg-base-300 shadow-xl">
-                                <div className="card-body">
-                                    <h2 className="card-title">{blog.title}</h2>
-                                    <p>{blog.description}</p>
-                                </div>
-                            </Link>
-                        )
-                        }
-                    </div>
-                </div>
-                <div className="w-full hidden md:block overflow-hidden">
-                    <div className="flex gap-4 justify-center">
-                        {ownedBlogs.map((blog,index)=>
-                            <Link href={`blogs/${blog._id}`} key={index} className="card w-72 bg-base-300 shadow-xl">
-                                <div className="card-body">
-                                    <h2 className="card-title">{blog.title}</h2>
-                                    <p>{blog.description}</p>
-                                </div>
-                            </Link>
-                        )
-                        }
-                    </div>
-                </div>
+                <div className="w-full md:justify-center gap-2 carousel rounded-box">
+                    {ownedBlogs.map((blog,index)=> 
+                        <Link 
+                            href={`blogs/${blog._id}`} 
+                            key={index} 
+                            className="carousel-item w-60 h-72 bg-secondary">
+                            <motion.div
+                                initial={{opacity: 0,y:10}}
+                                whileInView={{opacity: 1, y:0}}
+                                transition={{type: "tween", duration:1}}
+                                viewport={{once: true}}
+                                className="card-body">
+                                <h2 className="card-title">{blog.title}</h2>
+                                <p>{blog.description}</p>
+                            </motion.div>
+                        </Link>
+                    )}
+                </div> 
                 <div className="mt-20 w-fit mx-auto">
                     <button
                         onClick={logOut}

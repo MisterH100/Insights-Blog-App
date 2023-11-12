@@ -87,7 +87,7 @@ const Header =()=>{
                                 <h3 className="text-sm opacity-50">{user.username}</h3>
                             </div>
 
-                            <div className="avatar">
+                            <Link href={"/profile"} className="avatar">
                                 <div className="w-20 h-20 rounded-full">
                                     <Image 
                                         src={user.profileImage.image_url?user.profileImage.image_url:profileImage.src} 
@@ -96,7 +96,7 @@ const Header =()=>{
                                         height={100} 
                                     />
                                 </div>
-                            </div>
+                            </Link>
                         </div>:
                         null
                     }   

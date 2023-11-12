@@ -14,7 +14,7 @@ export const LoginPrompt = ()=>{
                 >
                     login
                 </button>
-                <Link href="#" className="link mt-4">
+                <Link href="https://thehandsomedev.com/collab" target="_blank" className="link mt-4">
                     sign up
                 </Link>
             </div>
