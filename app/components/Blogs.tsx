@@ -20,7 +20,7 @@ const Blogs = ({filter}:{filter:any})=>{
             <h1 className="font-bold text-3xl p-4">All blog Posts:</h1>
             {filter?<span className="font-bold p-4">{filter}'s blog posts</span>: null}
             {loading?<Loading/>:
-                error?<ErrorMessage message="opps an error has occured"/>:
+                error?<ErrorMessage message="opps an error has occured, check your internet connection"/>:
                 <> 
                     {filter == null?<NoResults/>:
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 gap-y-10 mt-4">
@@ -32,9 +32,9 @@ const Blogs = ({filter}:{filter:any})=>{
                                     viewport={{once: true}}
                                     key={index} 
                                     className="card card-compact min-w-96 shadow-sm shadow-gray-800  text-white z-0">
-                                    <div className="bg-white rounded-tr-md rounded-tl-md h-40 flex justify-center items-center">
+                                    <div className="bg-white rounded-tr-md rounded-tl-md h-40 flex justify-center items-center overflow-hidden">
                                         <Image
-                                            className="w-full h-full object-contain"
+                                            className="w-full h-full object-contain hover:scale-125 transition-all duration-700 ease-in-out"
                                             src={blog.blogImage?blog.blogImage:defaultImage}
                                             alt="Insghts Logo"
                                         /> 
@@ -42,8 +42,9 @@ const Blogs = ({filter}:{filter:any})=>{
                                     <div className="card-body">
                                         <h2 className="card-title">{blog.title}</h2>
                                         <p>{blog.description}</p>
-                                        <div className="card-actions justify-end">
-                                        <Link href={`/blogs/${blog._id}`} className="link">Read Now</Link>
+                                        <div className="card-actions justify-center">
+                                            <Link href={`/blogs/${blog._id}`} className="btn bg-white text-black w-full hover:text-white capitalize">Read Now
+                                            </Link>
                                         </div>
                                     </div>
                                 </motion.div>

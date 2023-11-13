@@ -43,7 +43,8 @@ export const LoginModal = ()=>{
                 })
             } catch (error: any) {
                 setLoading(false);
-                setStatus(error.response.data);
+                setStatus("failed to log in");
+                console.log(error)
             }
         }
         setLoading(false)

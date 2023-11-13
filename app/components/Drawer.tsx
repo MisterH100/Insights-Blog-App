@@ -27,8 +27,25 @@ export const Drawer = () =>{
                 </label>
             </div> 
             <div className="drawer-side">
-                <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay pl-40"></label>
+                <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay pl-40">
+                    
+                </label>
+
                 <ul className="menu p-4 w-80 min-h-full bg-white text-black">
+                    <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay flex justify-center p-2 hover:bg-black hover:text-white transition-colors duration-200 cursor-pointer mb-2">
+                        <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            className="h-6 w-6" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor">
+                                <path strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                strokeWidth="2" d="M6 18L18 6M6 6l12 12" 
+                                />
+                        </svg>
+                    
+                    </label>
                     <li>
                         <Link href={"/"} className="flex items-center gap-2 hover:text-black">
                         
@@ -83,20 +100,20 @@ export const Drawer = () =>{
                             profile
                         </Link>
                     </li>
-                    <li className="mt-10 w-full mx-auto">
+                    <div className="mt-10 w-full flex justify-center">
                         {isAuthenticated?
                             <button
                                 onClick={logOut}
-                                className="btn btn-warning hover:bg-yellow-300 hover:text-black"
+                                className="btn btn-warning hover:bg-yellow-300 hover:text-black w-full"
                                 >Logout
                             </button>:
                             <button
                                 onClick={()=>loginRef.current?.showModal()}
-                                className="btn btn-primary hover:bg-yellow-300 hover:text-black"
+                                className="btn btn-primary hover:bg-yellow-300 hover:text-black w-full"
                                 >login
                             </button>
                         }
-                    </li>
+                    </div>
                 </ul>
             </div>
         </div>

@@ -55,7 +55,7 @@ export const Profile =()=>{
                         <Link 
                             href={`blogs/${blog._id}`} 
                             key={index} 
-                            className="carousel-item w-60 h-72 bg-secondary">
+                            className="relative carousel-item w-60 h-72 bg-secondary">
                             <motion.div
                                 initial={{opacity: 0,y:10}}
                                 whileInView={{opacity: 1, y:0}}
@@ -65,6 +65,10 @@ export const Profile =()=>{
                                 <h2 className="card-title">{blog.title}</h2>
                                 <p>{blog.description}</p>
                             </motion.div>
+                            <div 
+                                className="absolute top-0 left-0 w-full h-full bg-black opacity-0 hover:opacity-100 hover:bg-opacity-50 flex justify-center items-center transition-all duration-200 ease-in-out">
+                                <p>Read Blog</p>
+                            </div>
                         </Link>
                     )}
                 </div> 
