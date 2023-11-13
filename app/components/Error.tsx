@@ -11,8 +11,8 @@ export const ErrorMessage = ({message}: IMessage)=>{
         location.reload();
     }
     return(
-        <div className="w-full h-screen pt-20 absolute top-0 left-0 flex items-center justify-center text-center pointer-events-auto">
-            <div>
+        <div className="w-full h-screen pt-20 absolute top-0 left-0 flex items-center justify-center text-center pointer-events-auto bg-black">
+            <div className="flex flex-col items-center">
                 <div className="text-center">
                     <Image
                         src={error}

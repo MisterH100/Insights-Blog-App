@@ -5,7 +5,7 @@ import profileImage from '@/app/assets/userimage.png'
 import Link from "next/link";
 import { useFetchPublishers } from "../functions/getData";
 import { Loading } from "../components/Loading";
-
+import {motion} from "framer-motion";
 
 
 export const PublisherList =()=>{
@@ -19,7 +19,12 @@ export const PublisherList =()=>{
                 <>
                     {publishers.map((publisher,index)=>  
                         <Link href={`/blogs?pb=${publisher.name+" "+publisher.surname }`} key={index} className="flex items-center mt-4">
-                            <div className="avatar">
+                            <motion.div 
+                                initial={{opacity: 0,y:10}}
+                                whileInView={{opacity: 1, y:0}}
+                                transition={{type: "tween", duration:1}}
+                                viewport={{once: true}}
+                                className="avatar">
                                 <div className="rounded-full w-12 h-12">
                                 <Image 
                                     src={publisher.profileImage?.image_url?publisher.profileImage.image_url:profileImage} 
@@ -28,11 +33,16 @@ export const PublisherList =()=>{
                                     height={100} 
                                 />                      
                                 </div>
-                            </div>
-                            <div className="pl-4">
+                            </motion.div>
+                            <motion.div
+                                initial={{opacity: 0,y:10}}
+                                whileInView={{opacity: 1, y:0}}
+                                transition={{type: "tween", duration:1}}
+                                viewport={{once: true}}
+                                className="pl-4">
                                 <div className="font-bold">{publisher.name} {publisher.surname}</div>
                                 <div className="text-sm opacity-50">{publisher.username}</div>
-                            </div>
+                            </motion.div>
                         </Link>
                     )}
                 </>

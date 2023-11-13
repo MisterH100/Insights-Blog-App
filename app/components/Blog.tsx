@@ -4,6 +4,7 @@ import Link from "next/link";
 import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
 import profileImage from "../assets/handsomeSelfie.png";
+import defaultImage from "@/app/assets/defaultImage.jpg";
 import { useFetchBlog } from "../functions/getData";
 import { useGlobalContext } from "../utils/globalContext";
 import { Loading } from "./Loading";
@@ -15,9 +16,7 @@ import { ErrorMessage } from "./Error";
 const Blog =({BlogPostId}: any)=>{
     const URL =`https://misterh-api-server.onrender.com/api/blogs/blog/${BlogPostId}`;
     const {loading} = useGlobalContext();
-    const {blog,error}= useFetchBlog(URL)
-
-
+    const {blog,error}= useFetchBlog(URL);
 
     return(
         <section className="relative w-full p-10 bg-base-100 text-base-content">
@@ -51,6 +50,13 @@ const Blog =({BlogPostId}: any)=>{
 
                     <div className="py-6 prose min-w-full">
                         <h1 className="underline">{blog.title}</h1>
+                        <div className="w-full h-80">
+                            <Image
+                                className="w-full h-full object-none"
+                                src={blog.blogImage?blog.blogImage:defaultImage}
+                                alt="Blog Cover Image"
+                            />
+                        </div>
                         <div className="font-semibold">
                             <ReactMarkdown> 
                                 {blog.blog}
